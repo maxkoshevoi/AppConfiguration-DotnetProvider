@@ -66,7 +66,7 @@ namespace Microsoft.Azure.AppConfiguration.Functions.Worker
         private static bool IsConfigureAwaitAllowed()
         {
             // Returns false if OrchestrationTriggerAttribute is loaded, true otherwise
-            return !AppDomain.CurrentDomain.GetAssemblies().Any(assembly => assembly.GetType("Microsoft.Azure.Functions.Worker.OrchestrationTriggerAttribute") != null);
+            return !AppDomain.CurrentDomain.GetAssemblies().Any(assembly => assembly.GetName().Name == "Microsoft.Azure.Functions.Worker.Extensions.DurableTask");
         }
     }
 }
